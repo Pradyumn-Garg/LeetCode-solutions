@@ -1,26 +1,47 @@
 class SnapshotArray {
 public:
-    int snapId;
-    vector<vector<pair<int, int>>> historyRecords;
+    int id;
+    vector<vector<pair<int, int>>> arr;
     SnapshotArray(int length) {
-        snapId = 0;
-        historyRecords.resize(length);
+        id = 0;
+        arr.resize(length);
         for (int i = 0; i < length; ++i) {
-            historyRecords[i].push_back(make_pair(0, 0));
+            arr[i].push_back({0, 0});
         }
     }
     
     void set(int index, int val) {
-        historyRecords[index].push_back(make_pair(snapId, val));
+        if(arr[index].back().first==id){
+            arr[index].pop_back();
+        }
+        arr[index].push_back({id, val});
     }
     
     int snap() {
-        return snapId++;
+        return id++;
     }
     
     int get(int index, int snap_id) {
-        auto it = upper_bound(historyRecords[index].begin(), historyRecords[index].end(), make_pair(snap_id, INT_MAX));
-        return prev(it)->second;
+        int st=0,end=arr[index].size()-1,ans;
+        while(end>=st){
+            int mid=(st+end)/2;
+            if(arr[index][mid].first>snap_id){
+                if(end==st){
+                    break;
+                }
+                end=mid;
+                continue;
+            }
+            else if(arr[index][mid].first<snap_id){
+                ans=arr[index][mid].second;
+                st=mid+1;
+                continue;
+            }
+            else if(arr[index][mid].first==snap_id){
+                return arr[index][mid].second;
+            }
+        }
+        return ans;
     }
 };
 
