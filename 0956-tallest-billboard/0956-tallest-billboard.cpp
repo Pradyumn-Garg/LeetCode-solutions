@@ -34,8 +34,6 @@ public:
 
            dp[i + rod] = max(dp[i + rod], dpCopy[i]+rod);
            dp[abs(i - rod)] = max(dp[abs(i - rod)], max(dpCopy[i],dpCopy[i]-i+rod));
-           // dp[abs(i - rod)] = max(dp[abs(i - rod)], dpCopy[i] + min(i, rod));
-
       }
     }
 
