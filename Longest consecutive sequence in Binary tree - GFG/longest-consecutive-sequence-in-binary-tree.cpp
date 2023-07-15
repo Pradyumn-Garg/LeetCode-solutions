@@ -101,17 +101,13 @@ class Solution{
     // sequence
     int longestConsecutive(Node* root)
     {
-        stack <Node*> s;
-        s.push(root);
         int curr=INT_MIN;
         int ans=0;
-        rec(s,curr,0,ans);
+        rec(root,curr,0,ans);
         return ans==1?-1:ans;
     }
     
-    void rec(stack <Node*> &s,int curr,int size,int &ans){
-        Node* top=s.top();
-        s.pop();
+    void rec(Node* top,int curr,int size,int &ans){
         if(curr+1==top->data){
             ++size;
         }
@@ -121,12 +117,10 @@ class Solution{
         ans=max(ans,size);
         curr=top->data;
         if(top->left!=NULL){
-            s.push(top->left);
-            rec(s,curr,size,ans);
+            rec(top->left,curr,size,ans);
         }
         if(top->right!=NULL){
-            s.push(top->right);
-            rec(s,curr,size,ans);
+            rec(top->right,curr,size,ans);
         }
         return;
     }
