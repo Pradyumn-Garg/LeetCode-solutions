@@ -116,9 +116,16 @@ class Solution{
             return 0;
         }
         int left=rec(root->left,ans);
+        if(!ans){
+            return -1;
+        }
         int right=rec(root->right,ans);
+        if(!ans){
+            return -1;
+        }
         if(abs(left-right)>1){
             ans=false;
+            return -1;
         }
         return max(left,right)+1;
     }
