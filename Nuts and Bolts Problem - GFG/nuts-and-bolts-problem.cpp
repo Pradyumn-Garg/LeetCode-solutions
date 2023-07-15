@@ -9,10 +9,25 @@ using namespace std;
 class Solution{
 public:	
 
-	void matchPairs(char nuts[], char bolts[], int n) {
-	    sort(nuts,nuts+n);
-	    sort(bolts,bolts+n);
-	}
+    void matchPairs(char nuts[], char bolts[], int n) {
+        char arr[9] = {'!', '#' , '$', '%' , '&', '*','@' ,'^','~'} ;
+        
+     unordered_set<char>st;
+     
+     for(int i=0; i<n;i++)
+     st.insert(nuts[i]);
+     int j=0;
+     for(int i=0; i<9;i++){
+         if(st.find(arr[i])!=st.end()){
+             if(j>=n)
+             break;
+             nuts[j]=arr[i];
+             bolts[j]=arr[i];
+             j++;
+         }
+     }
+    }
+
 
 };
 
