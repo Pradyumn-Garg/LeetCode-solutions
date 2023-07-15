@@ -116,16 +116,6 @@ class Solution {
         }
         return ans;
     }
-    // void rec(map<int,int> &m, Node* root,int level){
-    //     if(root==NULL){
-    //         return;
-    //     }
-    //     m[level]=root->data;
-    //     rec(m,root->left,level-1);
-    //     rec(m,root->right,level+1);
-    //     return;
-    // }
-    
 };
 
 //{ Driver Code Starts.
