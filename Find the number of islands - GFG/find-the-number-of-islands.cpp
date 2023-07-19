@@ -8,57 +8,50 @@ class Solution {
     // Function to find the number of islands.
     int numIslands(vector<vector<char>>& grid) {
         int n=grid.size(),m=grid[0].size();
-        vector<vector<bool>> visited(n,vector<bool>(m,false));
         int ans=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                if(!visited[i][j]){
-                    if(grid[i][j]=='1'){
-                        ans++;
-                        dfs(grid,visited,n,m,i,j);
-                    }
-                    visited[i][j]=true;
+                if(grid[i][j]=='1'){
+                    ans++;
+                    dfs(grid,n,m,i,j);
                 }
             }
         }
         return ans;
     }
     
-    void dfs(vector<vector<char>> &grid,vector<vector<bool>> &visited,int n,int m,int i,int j){
-        if(visited[i][j]){
-            return;
-        }
-        visited[i][j]=true;
+    void dfs(vector<vector<char>> &grid,int n,int m,int i,int j){
+        grid[i][j]='0';
         if(i-1>-1){
             if(j-1>-1&&grid[i-1][j-1]=='1'){
-                dfs(grid,visited,n,m,i-1,j-1);
+                dfs(grid,n,m,i-1,j-1);
             }
             if(grid[i-1][j]=='1'){
-                dfs(grid,visited,n,m,i-1,j);
+                dfs(grid,n,m,i-1,j);
             }
             if(j+1<m&&grid[i-1][j+1]=='1'){
-                dfs(grid,visited,n,m,i-1,j+1);
+                dfs(grid,n,m,i-1,j+1);
             }
         }
         if(i+1<n){
             if(grid[i+1][j]=='1'){
-                dfs(grid,visited,n,m,i+1,j);
+                dfs(grid,n,m,i+1,j);
             }
         }
         if(j-1>-1){
             if(grid[i][j-1]=='1'){
-                dfs(grid,visited,n,m,i,j-1);
+                dfs(grid,n,m,i,j-1);
             }
             if(i+1<n&&grid[i+1][j-1]=='1'){
-                dfs(grid,visited,n,m,i+1,j-1);
+                dfs(grid,n,m,i+1,j-1);
             }
         }
         if(j+1<m){
             if(grid[i][j+1]=='1'){
-                dfs(grid,visited,n,m,i,j+1);
+                dfs(grid,n,m,i,j+1);
             }
             if(i+1<n&&grid[i+1][j+1]=='1'){
-                dfs(grid,visited,n,m,i+1,j+1);
+                dfs(grid,n,m,i+1,j+1);
             }
         }
         return;
