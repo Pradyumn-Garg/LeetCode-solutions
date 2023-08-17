@@ -11,37 +11,17 @@ class Solution
     //Function to find the first non-repeating character in a string.
     char nonrepeatingCharacter(string S)
     {
-        // vector <int> a(26,0);
-        // for(auto i:S){
-        //     a[int(i)-96]+=1;
-        // }
-        // for(auto i:S){
-        //     if(a[int(i)-96]==1){
-        //         return i;
-        //     }
-        // }
-        // return '$';
-
-        int h[26]={0};
-    	    
-        //using hash table to store count of each character.
-        for(int i = 0;i<S.length();i++){
-            h[S[i]-'a']++;
+        vector <int> a(26,0);
+        for(auto i:S){
+            a[i-'a']+=1;
         }
-
-        //iterating over the string.
-        for(int i = 0;i<S.length();i++)
-        {
-            //if count of current character is 1, we return it. 
-            if(h[S[i]-'a'] == 1){
-                return S[i];
+        for(auto i:S){
+            if(a[i-'a']==1){
+                return i;
             }
         }
-        //if there is no non-repeating character then we return '$'.
-            return '$';
-
+        return '$';
     }
-
 };
 
 //{ Driver Code Starts.
