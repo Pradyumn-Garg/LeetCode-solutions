@@ -7,12 +7,6 @@ class Solution {
   public:
     int toggleBits(int N , int L , int R) {
         int temp=N,count=1;
-        // if(temp&1==1){
-        //     return 100;
-        // }
-        // if(temp&1==0){
-        //     return 200;
-        // }
         while(temp!=0){
             if(count<=R&&count>=L){
                 if(temp&1==1){
