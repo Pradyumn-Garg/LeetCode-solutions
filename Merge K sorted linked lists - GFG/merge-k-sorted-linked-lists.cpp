@@ -48,7 +48,7 @@ class Solution{
     //Function to merge K sorted linked list.
     struct comp
     {
-        bool operator()(const Node *lhs, const Node *rhs) const {
+        bool operator()(const Node *lhs, const Node *rhs) {
             return lhs->data > rhs->data;
         }
     };
