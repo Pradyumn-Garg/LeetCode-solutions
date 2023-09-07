@@ -30,7 +30,7 @@ class Solution
                 count++;
             }
             if (count == p.length()) {
-                while (hash_str[s[start]-'a'] > hash_pat[s[start]-'a'] || hash_pat[s[start]-'a'] == 0) {
+                while (hash_str[s[start]-'a'] > hash_pat[s[start]-'a']) {
                     if (hash_str[s[start]-'a'] > hash_pat[s[start]-'a']){
                         hash_str[s[start]-'a']--;
                     }
