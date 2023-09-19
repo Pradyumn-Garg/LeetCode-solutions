@@ -11,7 +11,7 @@ public:
 	// The main function that returns the arrangement with the largest value as
 	// string.
 	// The function accepts a vector of strings
-	static bool cmp(string &a, string &b){
+	static bool cmp(string a, string b){
 	    return a+b>b+a?1:0;
 	}
 
